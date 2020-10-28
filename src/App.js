@@ -4,17 +4,19 @@ import CardList from './Components/CardList';
 
 const App = () => {
   const [cards, setCards] = useState([1,2,3,4,5,6,7,8]);
+  
   const [selected, setSelected] = useState([]);
-  const [currentScore, setCurrentScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
-
-  const handleClick = (e) => {
-    const id = e.target.id;
+  const updateSelected = (id) => {
     if (selected.length === 8) {
       setSelected([]);
     } else {
       setSelected((prevState) => ([...prevState, id]));
     };
+  };
+
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const updateScore = (id) => {
     if (selected.includes(id)) {
       setCurrentScore(0);
       setSelected([]);
@@ -28,7 +30,13 @@ const App = () => {
     setCards(shuffleCards(cards));
   }, [setBestScore, bestScore, currentScore, setCards, cards])
 
-  function shuffleCards(array) {
+  const handleClick = (e) => {
+    const id = e.target.id;
+    updateSelected(id);
+    updateScore(id);
+  };
+
+  const shuffleCards = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
