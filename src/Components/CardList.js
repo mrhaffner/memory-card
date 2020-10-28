@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card'
 
 const CardList = (props) => {
-    const { handleClick, cards } = props
+    const { handleClick, cards } = props;
     return (
         <div>
             {

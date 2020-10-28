@@ -1,8 +1,6 @@
 import React from 'react';
 
 const Scoreboard = (props) => {
-// current score
-// best score
     const { currentScore, bestScore } = props;
   return (
     <div>
@@ -10,6 +8,6 @@ const Scoreboard = (props) => {
         <h3>Best Score: {bestScore}</h3>
     </div>
   );
-}
+};
 
 export default Scoreboard;
